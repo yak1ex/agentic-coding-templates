@@ -1,0 +1,168 @@
+# AGENTS.md
+
+Operating instructions for coding agents working in `{{PROJECT_NAME}}`. Read this file and `TASKS.md` before changing the repository.
+
+## 1. Non-negotiable rules
+
+1. Do not fabricate repository facts, file paths, APIs, commands, test results, or completion claims. Inspect or run them.
+2. Make the smallest change that satisfies the requested outcome. Do not perform unrelated cleanup, refactoring, reformatting, or feature work.
+3. Match existing repository structure, conventions, and patterns unless the task explicitly changes them.
+4. Do not add, remove, replace, or upgrade dependencies without prior user approval.
+5. Do not create commits, rewrite history, push, or publish unless repository-specific instructions explicitly authorize it.
+6. Keep `TASKS.md` synchronized with meaningful implementation progress in the same work cycle.
+7. Do not expose, copy, log, or commit credentials, secrets, private keys, tokens, or personal data.
+
+## 2. Project context
+
+- Project: `{{PROJECT_NAME}}`
+- Objective: `{{PROJECT_OBJECTIVE}}`
+- Primary language(s): `{{PRIMARY_LANGUAGES}}`
+- Framework(s): `{{FRAMEWORKS}}`
+- Runtime and deployment target: `{{DEPLOYMENT_TARGET}}`
+- Supported host platforms: `{{HOST_PLATFORMS}}`
+- External runtime requirements: `{{EXTERNAL_REQUIREMENTS}}`
+
+## 3. Repository orientation
+
+Before editing:
+
+1. Read `TASKS.md` and identify the active task or relevant mainline task.
+2. Inspect the files to be changed and their callers, tests, configuration, and adjacent conventions.
+3. Inspect manifests and lockfiles before choosing tool commands or proposing dependencies.
+4. Check the working tree and preserve unrelated user changes.
+5. State a brief plan and verifiable success criteria for non-trivial work.
+6. Resolve ambiguity from repository evidence when possible. Ask only when materially different interpretations remain.
+
+Repository layout:
+
+- Source: `{{SOURCE_PATHS}}`
+- Tests: `{{TEST_PATHS}}`
+- Configuration: `{{CONFIG_PATHS}}`
+- Generated or vendored paths not to edit manually: `{{DO_NOT_EDIT_PATHS}}`
+
+## 4. Implementation policy
+
+- Implement only requested behavior and work required to make it correct.
+- Prefer direct, readable code over speculative abstraction or configurability.
+- Reuse existing utilities and patterns before introducing new ones.
+- Handle realistic failure modes at system boundaries; do not hide errors or suppress diagnostics without justification.
+- Remove imports, variables, functions, files, and configuration made obsolete by the current change, but do not delete unrelated pre-existing code.
+- Preserve public APIs, stored data formats, command-line behavior, and compatibility unless the task explicitly changes them.
+- Update documentation and examples when the change makes them inaccurate.
+
+## 5. Dependency policy
+
+Prefer the standard library and existing dependencies. A new dependency is acceptable only when it materially simplifies the implementation or avoids unreliable custom code.
+
+Prior user approval is required before:
+
+- adding a dependency;
+- removing or replacing a dependency;
+- upgrading or downgrading a dependency;
+- changing a package source, feature set, or resolution policy in a materially significant way.
+
+Before requesting approval, explain:
+
+1. the need;
+2. alternatives considered, including existing or standard-library options;
+3. expected maintenance, security, binary-size, or runtime impact where relevant;
+4. manifests and lockfiles that would change.
+
+Installing or synchronizing dependencies already declared by the repository is allowed. After an approved dependency change, update both the manifest and lockfile and run relevant checks.
+
+## 6. Verification policy
+
+Define success as observable behavior and verification, not a plausible diff.
+
+- Run every relevant check already configured by the repository.
+- During iteration, prefer focused tests or checks; run the broader relevant suite before finalizing.
+- For a bug fix, add or identify a reproducer where practical and verify it fails before or is demonstrably addressed by the fix.
+- For a refactor, verify behavior before and after and avoid unintended public API changes.
+- For performance work, establish a baseline and compare with the same method.
+- Read command output and report failures accurately. Do not claim a check passed if it was not run or completed.
+- Do not introduce a full quality-tool stack merely to satisfy this template.
+- For a new non-trivial project, establish a minimal testing and static-check baseline appropriate to its language and risk.
+
+Completion authority:
+
+- Objective, non-UI work may be marked `completed` after relevant automated or executable checks pass.
+- Documentation-only work may be marked `completed` after a consistency review.
+- UI appearance, usability, hardware behavior, platform integration, and subjective output remain `in progress` with `Awaiting user verification` when adequate verification is unavailable.
+- A task may be marked `completed` after explicit user confirmation of the remaining manual checks.
+
+## 7. Task management
+
+`TASKS.md` is the authoritative record of project objective, current state, mainline implementation work, verification evidence, and short decisions.
+
+For each meaningful implementation step:
+
+1. Identify the affected stable task ID.
+2. Update only the affected task entries in the same work cycle.
+3. Record factual implementation, verification, remaining work, blockers, or user-verification needs.
+4. Add newly discovered work as a new task with the next unused ID.
+5. Preserve existing IDs and do not reuse deleted or cancelled IDs.
+6. Do not renumber or substantially reorganize tasks without explicit user approval.
+7. Perform a final consistency review of `TASKS.md` before responding.
+
+Allowed statuses are exactly:
+
+- `pending`: not started;
+- `in progress`: implementation or verification has started but is incomplete;
+- `blocked`: cannot proceed because of a specific dependency, decision, environment, or external condition;
+- `completed`: implemented and adequately verified under the completion policy;
+- `cancelled`: intentionally abandoned or superseded, with the reason recorded.
+
+When changing a status, include enough evidence to explain why. Do not equate code written with task completed.
+
+## 8. Git and workspace safety
+
+- Inspect the working tree before and after work.
+- Do not discard, overwrite, stage, or modify unrelated user changes.
+- Avoid destructive Git commands unless explicitly requested and the consequences are clear.
+- Do not commit by default.
+- When commits are authorized, include only task-related changes and follow `{{COMMIT_CONVENTION}}`.
+- Do not add AI attribution unless the repository explicitly requires it.
+
+## 9. Commands
+
+Use repository-defined commands and infer package managers from manifests, lockfiles, and version files. Commands should be shell-neutral where practical; do not assume Bash.
+
+- Install or synchronize: `{{INSTALL_COMMAND}}`
+- Run locally: `{{RUN_COMMAND}}`
+- Build: `{{BUILD_COMMAND}}`
+- Test all: `{{TEST_COMMAND}}`
+- Test focused: `{{FOCUSED_TEST_COMMAND}}`
+- Lint: `{{LINT_COMMAND}}`
+- Format check: `{{FORMAT_CHECK_COMMAND}}`
+- Type or static check: `{{TYPECHECK_COMMAND}}`
+- Package or release check: `{{PACKAGE_COMMAND}}`
+
+If a command does not apply, write `N/A` rather than inventing one.
+
+## 10. Repository-specific constraints
+
+- `{{REPOSITORY_CONSTRAINT_1}}`
+- `{{REPOSITORY_CONSTRAINT_2}}`
+- `{{REPOSITORY_CONSTRAINT_3}}`
+
+## 11. Stack-specific instructions
+
+<!-- Copy and adapt the relevant appendix from the template repository's stacks/ directory. Keep this instantiated AGENTS.md self-contained. -->
+
+`{{STACK_SPECIFIC_INSTRUCTIONS}}`
+
+## 12. Project learnings
+
+Maintain short, concrete rules learned from corrections or repository-specific failures. Tighten an existing rule instead of duplicating it. Remove obsolete rules.
+
+- `{{PROJECT_LEARNING_OR_EMPTY}}`
+
+## 13. Final response checklist
+
+Before the final response:
+
+- review the changed-file list;
+- run and report relevant verification;
+- confirm `TASKS.md` matches the implementation state;
+- distinguish verified behavior from unverified claims;
+- mention blockers, risks, manual verification, and approved-but-unfinished follow-up explicitly.
