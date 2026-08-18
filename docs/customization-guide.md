@@ -97,6 +97,15 @@ Do not force every task into `completed` merely because compilation passes. For 
 
 After the user confirms the stated checks, update the task to `completed` and record that confirmation factually.
 
+Keep the `Active task` handoff fields current while work is incomplete:
+
+- `Waiting on: agent` means the agent can continue without user input.
+- `Waiting on: user` means the user must grant permission, make a decision, or perform verification.
+- `Waiting on: external` means progress depends on a third-party system, event, or prerequisite.
+- `Waiting on: none` means there is no active dependency or required action.
+
+Write `Required action: None.` unless a specific party must do something. When user input is required, make the request concrete enough to answer without reconstructing context from the task history.
+
 ## 8. Keep AGENTS.md effective
 
 Instruction files lose value when they become long collections of generic advice. Periodically remove rules that do not prevent a plausible repository-specific failure.

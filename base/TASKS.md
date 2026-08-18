@@ -20,6 +20,8 @@
 - Task: `{{ACTIVE_TASK_ID_OR_NONE}}`
 - Current step: {{CURRENT_STEP_OR_NONE}}
 - Next verification: {{NEXT_VERIFICATION_OR_NONE}}
+- Waiting on: `{{AGENT_USER_EXTERNAL_OR_NONE}}`
+- Required action: {{REQUIRED_ACTION_OR_NONE}}
 
 ## Tasks
 

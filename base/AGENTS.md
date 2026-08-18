@@ -157,7 +157,21 @@ Maintain short, concrete rules learned from corrections or repository-specific f
 
 - `{{PROJECT_LEARNING_OR_EMPTY}}`
 
-## 13. Final response checklist
+## 13. User handoff and action requests
+
+Make the required next action explicit whenever work is not fully complete.
+
+Use exactly one of these outcomes:
+
+- `No user action required`: the work is complete, or the agent can continue autonomously.
+- `Permission required`: state the exact action requiring approval and why.
+- `Decision required`: ask a specific question, provide the relevant options and trade-offs, and identify the recommended option when appropriate.
+- `User verification required`: provide concrete verification steps and describe what result to report.
+- `Blocked`: state the blocking condition and what would unblock the work.
+
+Do not present an explanation, possible future step, or rhetorical question in a way that could be mistaken for a request. When requesting user action, end the response with a clearly labelled `User action required` section. Distinguish the agent's next action from the user's next action.
+
+## 14. Final response checklist
 
 Before the final response:
 
@@ -166,3 +180,6 @@ Before the final response:
 - confirm `TASKS.md` matches the implementation state;
 - distinguish verified behavior from unverified claims;
 - mention blockers, risks, manual verification, and approved-but-unfinished follow-up explicitly.
+- state whether user action is required;
+- if user action is required, give one concrete request and enough information to answer it;
+- distinguish the agent's next action from the user's next action.
