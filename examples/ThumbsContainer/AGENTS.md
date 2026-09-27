@@ -26,7 +26,7 @@ Operating instructions for coding agents working in `ThumbsContainer`. Read this
 
 Before editing:
 
-1. Read `TASKS.md` and identify the affected stable task.
+1. Read `TASKS.md`; identify the active work, current plan, and affected stable task.
 2. Inspect both frontend and backend paths for commands, events, data structures, and UI state involved in the task.
 3. Inspect `package.json`, the existing frontend lockfile, Cargo manifests, `Cargo.lock`, Tauri configuration, capabilities, and database migrations where relevant.
 4. Check the working tree and preserve unrelated user changes.
@@ -81,15 +81,23 @@ Do not infer UI correctness from compilation alone.
 
 ## 8. Task management
 
+Before implementing newly requested or discovered work, classify it as part of the current task, part of another existing task, a new accepted `T###` task, a `C###` candidate needing discussion, or no action. Do not implement a candidate merely because it was mentioned during verification.
+
+Task IDs do not express priority. Continue actionable active work first; otherwise select the first actionable item in `Current plan`. If the plan does not identify the next task, request a decision instead of choosing by task number.
+
+`Active work` is a pointer to the current execution focus; the referenced task is authoritative. Multiple tasks may be `in progress`, but only one may be active. The active task must exist and cannot be completed or cancelled. Keep its status, plan position, waiting party, and required action consistent.
+
 For every meaningful implementation step:
 
 1. Update the affected task in `TASKS.md` during the same work cycle.
 2. Record implemented behavior, checks, manual evidence, remaining work, and risks factually.
-3. Append newly discovered mainline work with the next unused stable ID.
+3. Triage newly discovered work before updating a task or candidate item.
 4. Preserve IDs and do not renumber or substantially reorganize tasks without explicit approval.
 5. Use exactly one status: `pending`, `in progress`, `blocked`, `completed`, or `cancelled`.
 6. Add a short decision record when a durable architectural or product choice would otherwise be reopened.
-7. Review task status and active-task metadata before the final response.
+7. Review task status, current plan, and active-work metadata before the final response.
+
+`.agentic-template.yml` is the authoritative template provenance record. Review later template revisions as merges and preserve repository-specific instructions.
 
 ## 9. Git safety
 

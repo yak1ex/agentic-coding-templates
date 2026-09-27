@@ -1,0 +1,10 @@
+schema_version: 1
+source: https://github.com/yak1ex/agentic-coding-templates
+base_release: "{{TEMPLATE_RELEASE}}"
+base_revision: "{{TEMPLATE_GIT_REVISION}}"
+adopted_at: "{{YYYY-MM-DD}}"
+last_reviewed_revision: "{{TEMPLATE_GIT_REVISION}}"
+components:
+  - base/AGENTS.md
+  - base/TASKS.md
+  - "{{STACK_COMPONENT_OR_REMOVE}}"

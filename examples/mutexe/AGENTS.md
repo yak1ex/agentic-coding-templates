@@ -25,7 +25,7 @@ Operating instructions for coding agents working in `mutexe`. Read this file and
 
 Before editing:
 
-1. Read `TASKS.md` and identify the affected stable task.
+1. Read `TASKS.md`; identify the active work, current plan, and affected stable task.
 2. Read `app.py`, relevant configuration examples, and any packaging files that the change affects.
 3. Inspect `pyproject.toml`, `uv.lock`, and `.python-version` if present before selecting commands.
 4. Inspect the working tree and preserve unrelated user changes.
@@ -76,14 +76,22 @@ If more Python files are changed, syntax-check each changed Python file or use a
 
 ## 8. Task management
 
+Before implementing newly requested or discovered work, classify it as part of the current task, part of another existing task, a new accepted `T###` task, a `C###` candidate needing discussion, or no action. Do not implement a candidate merely because it was mentioned during verification.
+
+Task IDs do not express priority. Continue actionable active work first; otherwise select the first actionable item in `Current plan`. If the plan does not identify the next task, request a decision instead of choosing by task number.
+
+`Active work` is a pointer to the current execution focus; the referenced task is authoritative. Multiple tasks may be `in progress`, but only one may be active. The active task must exist and cannot be completed or cancelled. Keep its status, plan position, waiting party, and required action consistent.
+
 For each meaningful step:
 
 1. Update the affected task in `TASKS.md`.
 2. Record implementation and verification facts.
-3. Append newly discovered mainline work using the next unused `T` ID.
+3. Triage newly discovered work before updating a task or candidate item.
 4. Preserve all existing IDs and do not reorganize mainline tasks without explicit approval.
 5. Use exactly one of: `pending`, `in progress`, `blocked`, `completed`, `cancelled`.
-6. Review `TASKS.md` for consistency before the final response.
+6. Review task status, current plan, and active work for consistency before the final response.
+
+`.agentic-template.yml` is the authoritative template provenance record. Review later template revisions as merges and preserve repository-specific instructions.
 
 ## 9. Git safety
 

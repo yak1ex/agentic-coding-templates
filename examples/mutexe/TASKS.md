@@ -15,11 +15,18 @@ Develop a Windows desktop utility that mutes and unmutes individual processes by
 
 Configuration loading, static process detection, watched executable buttons, and automatic window resizing are implemented. Existing records report Python syntax verification; live Windows behavior should be treated according to the verification evidence recorded per task.
 
-## Active task
+## Current plan
 
-- Task: None.
+- None. No accepted unfinished work is currently ordered for execution.
+- Selection basis: Establish an agreed outcome before beginning further implementation.
+- Last reviewed: 2026-09-06
+
+## Active work
+
+- Task: `none`
 - Current step: No active implementation step is recorded.
-- Next verification: Select a pending task or add a new mainline task before implementation.
+- Waiting on: `none`
+- Required action: None.
 
 ## Tasks
 
@@ -147,6 +154,6 @@ Configuration loading, static process detection, watched executable buttons, and
 
 - None.
 
-## Backlog
+## Candidate items
 
-- None recorded beyond the completed source task list.
+- None.

@@ -15,11 +15,19 @@ Develop a Windows desktop application for registering, organizing, previewing, c
 
 The project has a buildable foundation, registration and search workflows, container modeling, progress and background job handling, image/video/archive previews, cache maintenance, and archive diagnostics. Combined-container search is partially implemented. Dedupe, nested archive policy, schema evolution, scale hardening, release quality, datetime search, archive-video previews, and archive-derived virtual hierarchy remain planned.
 
-## Active task
+## Current plan
+
+1. `T011` — Complete combined-container creation, editing, and search semantics.
+
+- Selection basis: Continue the already-started combined-container milestone; remaining pending tasks require a later priority decision.
+- Last reviewed: 2026-09-06
+
+## Active work
 
 - Task: `T011`
 - Current step: Continue combined-container creation/editing and search semantics.
-- Next verification: Run configured frontend and Rust checks, build an executable, and obtain user confirmation for the affected UI workflow.
+- Waiting on: `agent`
+- Required action: Complete the remaining implementation, run configured frontend and Rust checks, build an executable, and request user verification of the affected UI workflow.
 
 ## Tasks
 
@@ -489,6 +497,13 @@ The project has a buildable foundation, registration and search workflows, conta
 
 - None.
 
-## Backlog
+## Candidate items
 
-- Additional supported media formats may be proposed when concrete use cases and extractor/decoder behavior are known.
+### C001 — Support additional media formats
+
+- Origin: Preserved from the migration backlog.
+- Question: Which concrete media formats and use cases justify extending extractor and decoder behavior?
+- Possible relationship: separate work
+- Disposition: awaiting triage
+- Notes:
+  - Evaluate only when concrete formats and expected behavior are known.

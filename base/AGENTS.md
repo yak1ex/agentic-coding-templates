@@ -26,7 +26,7 @@ Operating instructions for coding agents working in `{{PROJECT_NAME}}`. Read thi
 
 Before editing:
 
-1. Read `TASKS.md` and identify the active task or relevant mainline task.
+1. Read `TASKS.md`; identify the active work, current plan, and relevant mainline task.
 2. Inspect the files to be changed and their callers, tests, configuration, and adjacent conventions.
 3. Inspect manifests and lockfiles before choosing tool commands or proposing dependencies.
 4. Check the working tree and preserve unrelated user changes.
@@ -94,15 +94,39 @@ Completion authority:
 
 `TASKS.md` is the authoritative record of project objective, current state, mainline implementation work, verification evidence, and short decisions.
 
+Before implementing newly requested or discovered work, classify it as exactly one of:
+
+- part of the current task because it is required by or naturally within its accepted outcome;
+- part of another existing task;
+- a new accepted task with the next unused `T###` ID;
+- a candidate item needing acceptance, prioritization, or feasibility analysis, with the next unused `C###` ID;
+- no action because it is duplicate, rejected, already satisfied, or out of scope.
+
+Do not implement a candidate merely because it was mentioned during review or user verification. Record its origin and possible relationship to existing work. When a candidate is accepted, create a new task ID and update the candidate's disposition; do not convert or rename its `C###` ID.
+
+Task IDs provide stable identity only. Their numbering and document order do not imply priority or execution sequence. `Current plan` is the authoritative ordering of accepted work. Continue the active task while it is actionable; otherwise choose the first actionable task in `Current plan`, skipping blocked or user-waiting entries without silently reordering them. If no agreed ordering identifies the next task, request a decision rather than choosing by task number.
+
+`Active work` is an execution pointer, not a second task record. The referenced task entry remains authoritative for status, scope, evidence, and remaining work. Multiple tasks may be `in progress`, but only one task can be active.
+
+Maintain these invariants whenever `TASKS.md` changes:
+
+- the active task ID exists, or the value is `none`;
+- work changes from `pending` to `in progress` when implementation or verification starts;
+- a `completed` or `cancelled` task is never active;
+- a `blocked` task remains active only while resolving its blocker is the current action;
+- `Waiting on: user` or `Waiting on: external` has a concrete required action;
+- `Waiting on: none` uses `Required action: None.`;
+- status, plan, and active-work fields are updated together when one affects the others.
+
 For each meaningful implementation step:
 
 1. Identify the affected stable task ID.
 2. Update only the affected task entries in the same work cycle.
 3. Record factual implementation, verification, remaining work, blockers, or user-verification needs.
-4. Add newly discovered work as a new task with the next unused ID.
+4. Triage newly discovered work before adding or changing a task or candidate item.
 5. Preserve existing IDs and do not reuse deleted or cancelled IDs.
 6. Do not renumber or substantially reorganize tasks without explicit user approval.
-7. Perform a final consistency review of `TASKS.md` before responding.
+7. Perform a final consistency review of task status, current plan, and active work before responding.
 
 Allowed statuses are exactly:
 
@@ -113,6 +137,8 @@ Allowed statuses are exactly:
 - `cancelled`: intentionally abandoned or superseded, with the reason recorded.
 
 When changing a status, include enough evidence to explain why. Do not equate code written with task completed.
+
+`.agentic-template.yml` is the authoritative template provenance record. Do not duplicate its release and revision fields in `TASKS.md`. When reviewing an upstream template update, compare from `last_reviewed_revision`, merge applicable changes without overwriting repository-specific instructions, and advance that field only after the review is complete.
 
 ## 8. Git and workspace safety
 

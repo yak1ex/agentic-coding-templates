@@ -15,17 +15,25 @@
 
 {{CURRENT_STATUS_SUMMARY}}
 
-## Active task
+## Current plan
+
+This ordered list expresses the agreed execution order. Task IDs provide stable identity only; their numbering does not imply priority or sequence. Continue actionable active work first. Otherwise, select the first actionable item here, skipping work that is blocked or waiting on the user without silently reordering the plan.
+
+1. `{{TASK_ID}}` — {{PLANNED_OUTCOME}}
+
+- Selection basis: {{WHY_THIS_ORDER}}
+- Last reviewed: {{YYYY-MM-DD}}
+
+## Active work
 
 - Task: `{{ACTIVE_TASK_ID_OR_NONE}}`
 - Current step: {{CURRENT_STEP_OR_NONE}}
-- Next verification: {{NEXT_VERIFICATION_OR_NONE}}
 - Waiting on: `{{AGENT_USER_EXTERNAL_OR_NONE}}`
 - Required action: {{REQUIRED_ACTION_OR_NONE}}
 
 ## Tasks
 
-Use stable IDs. Append newly discovered work using the next unused ID. Never reuse an ID or renumber existing tasks without explicit user approval.
+Use stable IDs. Append newly accepted work using the next unused ID. Never reuse an ID or renumber existing tasks without explicit user approval.
 
 ### T001 — {{TASK_TITLE}}
 
@@ -76,8 +84,15 @@ Keep the original task and ID with `Status: cancelled`; record the reason and re
 
 <!-- Example: - `T006`: Cancelled because the feature was superseded by `T009`. -->
 
-## Backlog
+## Candidate items
 
-Ideas not yet accepted into the mainline implementation plan. Backlog items do not require task IDs until promoted.
+Items awaiting acceptance, prioritization, or feasibility analysis. They are not implementation tasks and must not be started merely because they appear here. Use stable `C###` IDs so discussion can continue across work cycles. When a candidate is accepted, create a new `T###` task and retain the candidate as a short record of its disposition.
 
-- {{BACKLOG_ITEM_OR_NONE}}
+### C001 — {{CANDIDATE_TITLE}}
+
+- Origin: {{HOW_OR_WHERE_DISCOVERED}}
+- Question: {{WHAT_MUST_BE_DECIDED_OR_INVESTIGATED}}
+- Possible relationship: `{{TASK_IDS_OR_SEPARATE_WORK}}`
+- Disposition: awaiting triage
+- Notes:
+  - {{KNOWN_INFORMATION_OR_NONE}}
